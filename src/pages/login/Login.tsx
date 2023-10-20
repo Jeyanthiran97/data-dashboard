@@ -1,14 +1,13 @@
 import { useSession, signIn, signOut } from "next-auth/react"
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import styles from '@/styles/Home.module.css'
 
 const Login = () => {
   const { data: session} = useSession();
   const userProfileImg = session?.user?.image as string;
 
   if (session) {
-    return <div className={`${styles.main} `}>
+    return <div>
       <h4><u>Sign In User Details</u></h4>
       <h3>Name : {session?.user?.name} </h3>
       <p>E-mail : {session?.user?.email}</p>
@@ -17,7 +16,7 @@ const Login = () => {
     </div>
   }
 
-  return <div className={`${styles.main} `}>
+  return <div>
     Not Signed in <br/>
     <Button variant="contained" color="success" onClick={() => signIn()}>Sign in</Button>
   </div>
